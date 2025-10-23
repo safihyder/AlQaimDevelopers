@@ -1,36 +1,178 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AlQaim Developers Website
 
-## Getting Started
+A modern, professional website built for AlQaim Developers - a digital agency offering comprehensive web development and marketing services.
 
-First, run the development server:
+## 🚀 Features
+
+- **Modern Design**: Beautiful, responsive design with smooth animations
+- **GSAP Animations**: Engaging scroll-triggered animations and interactive elements
+- **Next.js 15**: Built with the latest Next.js framework
+- **Tailwind CSS v4**: Modern utility-first CSS with custom styling
+- **TypeScript**: Type-safe code for better development experience
+- **Responsive**: Fully responsive design that works on all devices
+
+## 🛠️ Services Showcased
+
+1. **Web Development** - Custom websites and web applications
+2. **Graphic Designing** - Eye-catching visual designs
+3. **Digital Marketing** - Strategic marketing campaigns
+4. **Social Media Management** - Comprehensive social media strategies
+5. **Influencer Marketing** - Connect with the right influencers
+6. **Branding** - Complete brand identity solutions
+
+## 📦 Technologies Used
+
+- **Next.js 15** - React framework for production
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS v4** - Utility-first CSS framework
+- **GSAP** - Professional-grade JavaScript animation library
+- **React 19** - Latest React features
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ installed
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd alqaim-developers
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+alqaim-developers/
+├── app/
+│   ├── layout.tsx          # Root layout with metadata
+│   ├── page.tsx            # Main page component
+│   └── globals.css         # Global styles and animations
+├── components/
+│   ├── Navigation.tsx      # Header navigation with scroll effects
+│   ├── Hero.tsx           # Hero section with animated elements
+│   ├── Services.tsx       # Services showcase with cards
+│   ├── About.tsx          # About section
+│   ├── Contact.tsx        # Contact form and information
+│   └── Footer.tsx         # Footer component
+├── public/               # Static assets
+└── package.json         # Project dependencies
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Key Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Navigation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Sticky navigation bar with scroll effects
+- Mobile-responsive hamburger menu
+- Smooth scroll to sections
 
-## Deploy on Vercel
+### Hero Section
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Animated text and CTAs
+- Floating background elements
+- Statistics display
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Services Section
+
+- 6 service cards with hover effects
+- Scroll-triggered animations
+- Gradient accents
+
+### Contact Section
+
+- Working contact form
+- Contact information display
+- Social media links
+
+## 🔧 Scripts
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+
+# Run linter
+npm run lint
+```
+
+## 🎯 Customization
+
+### Colors
+
+Main brand colors are defined in `app/globals.css`:
+
+- Primary: Indigo (#6366f1)
+- Secondary: Purple (#a855f7)
+- Accent: Pink (#ec4899)
+
+### Content
+
+Edit the component files in the `components/` directory to update:
+
+- Service descriptions
+- Contact information
+- About section content
+- Navigation links
+
+### Animations
+
+GSAP animations can be customized in each component file. Key animation triggers:
+
+- Scroll-based animations use ScrollTrigger
+- Timeline animations for sequential effects
+- Hover effects with CSS transitions
+
+## 📱 Responsive Design
+
+The website is fully responsive with breakpoints for:
+
+- Mobile: < 768px
+- Tablet: 768px - 1024px
+- Desktop: > 1024px
+
+## 🌐 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## 📄 License
+
+This project is created for AlQaim Developers. All rights reserved.
+
+## 👥 Contact
+
+For any inquiries, please contact:
+
+- Email: info@alqaimdevelopers.com
+- Phone: +1 (555) 123-4567
+
+---
+
+Built with ❤️ by AlQaim Developers
