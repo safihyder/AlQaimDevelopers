@@ -122,13 +122,13 @@ export default function Navigation() {
                 {item.name}
               </a>
             ))}
-            <Link
-              to={<GetStarted />}
+            <a
+              href="#contact"
               className="w-full text-center bg-linear-to-r from-yellow-500 via-yellow-600 to-yellow-700 text-black px-6 py-2 rounded-full mt-2 font-semibold block"
               onClick={() => setIsOpen(false)}
             >
               Get Started
-            </Link>
+            </a>
           </div>
         </div>
       )}
