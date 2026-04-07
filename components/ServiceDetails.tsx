@@ -371,6 +371,60 @@ export default function ServiceDetails({
         "Brand Voice Guide",
       ],
     },
+    {
+      id: 6,
+      title: "GST Services",
+      description:
+        "Comprehensive GST solutions including registration, return filing, and compliance management for your business.",
+      iconSrc: "/gst.png",
+      iconAlt: "GST Services",
+      gradient: "from-yellow-400 to-yellow-700",
+      borderColor: "border-yellow-500/20",
+      iconBg: "bg-yellow-500/10",
+      features: [
+        "GST Registration & Cancellation",
+        "GST Return Filing (GSTR-1, 3B, 9, 9C)",
+        "GST Notice Handling",
+        "GST Advisory & Consultation",
+        "ITC Reconciliation",
+        "GST Audit & Certification",
+      ],
+      benefits: [
+        "Ensured Tax Compliance",
+        "Hassle-free Filing Process",
+        "Optimized Tax Planning",
+        "Timely Notice Resolution",
+        "Accurate ITC Claims",
+        "Expert Financial Guidance",
+      ],
+      process: [
+        "Document Collection",
+        "Data Verification",
+        "Computation & Analysis",
+        "Filing & Submission",
+        "Acknowledgement & Cleanup",
+      ],
+      technologies: [
+        "GST Portal",
+        "Tally Prime",
+        "Zoho Books",
+        "ClearTax",
+        "Excel Automation",
+      ],
+      pricing: {
+        basic: "Contact for Quote",
+        premium: "Contact for Quote",
+        enterprise: "Contact for Quote",
+      },
+      duration: "Ongoing / Monthly",
+      deliverables: [
+        "GST Registration Certificate",
+        "Filed Return Acknowledgements",
+        "Compliance Reports",
+        "Audit Reports",
+        "Notice Responses",
+      ],
+    },
   ];
 
   const selectedService = services.find((service) => service.id === serviceId);
@@ -479,7 +533,7 @@ export default function ServiceDetails({
                 {selectedService.features.map((feature, index) => (
                   <li key={index} className="flex items-center text-gray-300">
                     <svg
-                      className="w-5 h-5 text-green-500 mr-3 shrink-0"
+                      className="w-5 h-5 text-yellow-500 mr-3 shrink-0"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -506,7 +560,7 @@ export default function ServiceDetails({
                 {selectedService.benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center text-gray-300">
                     <svg
-                      className="w-5 h-5 text-blue-500 mr-3 shrink-0"
+                      className="w-5 h-5 text-gray-400 mr-3 shrink-0"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -12,11 +12,10 @@ export default function Hero() {
   const logoContainerRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const revolvingLightRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const centeredScrollRef = useRef<HTMLDivElement>(null);
+  const [isAtBottom, setIsAtBottom] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -62,19 +61,33 @@ export default function Hero() {
       });
 
       // Content fades in on scroll
-      gsap.fromTo(
-        contentRef.current,
-        { opacity: 0, y: 100 },
-        {
-          opacity: 1,
-          y: 0,
-          scrollTrigger: {
-            ...scrollTrigger,
-            start: "10% top",
-            end: "30% top",
-          },
-        }
-      );
+      // gsap.fromTo(
+      //   contentRef.current,
+      //   { opacity: 0, y: 100 },
+      //   {
+      //     opacity: 1,
+      //     y: 0,
+      //     scrollTrigger: {
+      //       ...scrollTrigger,
+      //       start: "10% top",
+      //       end: "30% top",
+      //     },
+      //   }
+      // );
+
+      /*
+      // Fade out scroll indicator
+      gsap.to(scrollIndicatorRef.current, {
+        opacity: 0,
+        y: 20,
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "5% top",
+          end: "15% top",
+          scrub: true,
+        },
+      });
+      */
 
       // Floating animation for background elements
       gsap.to(".floating", {
@@ -85,10 +98,98 @@ export default function Hero() {
         yoyo: true,
         stagger: 0.3,
       });
+
+      // Centered Scroll Down indicator (Hero only)
+      gsap.to(centeredScrollRef.current, {
+        opacity: 0,
+        y: 20,
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "10% top",
+          end: "30% top",
+          scrub: true
+        }
+      });
+
+      // Show indicator with delay
+      gsap.fromTo(centeredScrollRef.current,
+        { opacity: 0, y: -20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: 1,
+          ease: "power2.out"
+        }
+      );
+
+      // Global Scroll Progress Bar animation
+      gsap.to(progressBarRef.current, {
+        scaleY: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.3,
+        }
+      });
+
+      // Show Progress indicator ONLY after scrolling past Hero
+      gsap.fromTo(scrollIndicatorRef.current,
+        { opacity: 0, x: 50 },
+        {
+          opacity: 1,
+          x: 0,
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "30% top",
+            end: "50% top",
+            scrub: true
+          }
+        }
+      );
+
+      // Toggle Up/Down state based on scroll position (near bottom/footer)
+      ScrollTrigger.create({
+        trigger: "html",
+        start: "bottom 100%", // This is standard for end-of-page detection
+        end: "bottom bottom",
+        onEnter: () => setIsAtBottom(true),
+        onLeaveBack: () => setIsAtBottom(false),
+      });
+
+      // Alternatively, use a simpler bottom threshold
+      ScrollTrigger.create({
+        start: "bottom bottom-=100px",
+        onEnter: () => setIsAtBottom(true),
+        onLeaveBack: () => setIsAtBottom(false),
+      });
+
     }, heroRef);
 
     return () => ctx.revert();
   }, []);
+
+  const scrollToHeroContent = () => {
+    const nextSection = document.getElementById("hero-content");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleIndicatorClick = () => {
+    if (isAtBottom) {
+      scrollToTop();
+    } else {
+      scrollToHeroContent();
+    }
+  };
+
 
   return (
     <section
@@ -173,68 +274,71 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32 z-10">
-        {/* Main Content - Fades in on scroll, overlapping logo position */}
-        <div
-          ref={contentRef}
-          className="relative text-center "
-          style={{ opacity: 0 }}
-        >
-          <h1
-            ref={titleRef}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 bg-linear-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent pb-4 pt-80"
-          >
-            Transform Your Digital Presence
-          </h1>
-          <p
-            ref={subtitleRef}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-4"
-          >
-            We bring your vision to life with cutting-edge web development,
-            stunning design, and powerful marketing strategies that drive
-            results.
-          </p>
-          <div
-            ref={ctaRef}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
-          >
-            <a
-              href="#contact"
-              className="w-full sm:w-auto bg-linear-to-r from-yellow-500 via-yellow-600 to-yellow-700 text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105 transition-all duration-200 text-center"
-            >
-              Start Your Project
-            </a>
-            <a
-              href="#services"
-              className="w-full sm:w-auto border-2 border-yellow-500 text-yellow-500 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-yellow-500/10 transform hover:scale-105 transition-all duration-200 text-center"
-            >
-              Explore Services
-            </a>
-          </div>
-
-          {/* Stats Section */}
-          <div
-            ref={statsRef}
-            className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 px-4"
-          >
-            {[
-              { number: "100+", label: "Projects Completed" },
-              { number: "50+", label: "Happy Clients" },
-              { number: "6+", label: "Services Offered" },
-              { number: "24/7", label: "Support Available" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-linear-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-                  {stat.number}
-                </div>
-                <div className="text-gray-400 mt-1 sm:mt-2 text-sm sm:text-base">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Centered Scroll Down Indicator - Visible only at start */}
+      <div
+        ref={centeredScrollRef}
+        onClick={handleIndicatorClick}
+        className="fixed bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 cursor-pointer z-[999] group opacity-0"
+      >
+        <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-yellow-500/60 group-hover:text-yellow-500 transition-colors">
+          Discover
+        </span>
+        <div className="relative w-6 h-10 border-2 border-yellow-500/20 rounded-full flex justify-center group-hover:border-yellow-500/50 transition-all p-1">
+          <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-bounce mt-1"></div>
         </div>
+      </div>
+
+      {/* Progress Scroll Indicator - Bottom Right - Visible after Hero */}
+      <div
+        ref={scrollIndicatorRef}
+        onClick={handleIndicatorClick}
+        className="fixed bottom-10 right-4 sm:right-8 flex flex-row items-center gap-4 cursor-pointer group z-[999] opacity-0"
+      >
+        {/* <div className="relative flex flex-col items-end pointer-events-none w-24 h-8 overflow-hidden">
+          <div className={`absolute right-0 flex flex-col items-end transition-all duration-500 ${isAtBottom ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <span className="text-yellow-500 text-[10px] uppercase font-black tracking-widest leading-none">
+              Back To
+            </span>
+            <span className="text-white text-[12px] uppercase font-black tracking-widest leading-tight">
+              Top
+            </span>
+          </div>
+          <div className={`absolute right-0 flex flex-col items-end transition-all duration-500 ${isAtBottom ? '-translate-y-8 opacity-0' : 'translate-y-0 opacity-100'}`}>
+            <span className="text-yellow-500 text-[10px] uppercase font-black tracking-widest leading-none">
+              Scroll
+            </span>
+            <span className="text-white/40 text-[9px] uppercase tracking-widest leading-tight">
+              Progress
+            </span>
+          </div>
+        </div> */}
+        {/* Dynamic Arrow (Rotates) */}
+        <div className={`relative flex flex-col items-center transition-transform duration-700 ease-in-out ${isAtBottom ? 'rotate-180' : 'rotate-0'}`}>
+          <div className="w-[1px] h-12 bg-linear-to-b from-transparent via-yellow-500/50 to-yellow-500 animate-pulse"></div>
+          <svg
+            className="w-5 h-5 text-yellow-500 animate-bounce -mt-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 14l-7 7-7-7" />
+          </svg>
+        </div>
+        <div className="relative w-1.5 h-32 bg-yellow-500/10 rounded-full overflow-hidden border border-yellow-500/5 backdrop-blur-sm">
+          {/* Background trace */}
+          <div className="absolute inset-0 bg-yellow-500/5"></div>
+          {/* Progress fill */}
+          <div
+            ref={progressBarRef}
+            className="absolute top-0 left-0 w-full bg-linear-to-b from-yellow-400 via-yellow-500 to-yellow-600 origin-top shadow-[0_0_15px_rgba(234,179,8,0.5)]"
+            style={{ height: '100%', transform: 'scaleY(0)' }}
+          ></div>
+        </div>
+
+
       </div>
     </section>
   );
 }
+
+

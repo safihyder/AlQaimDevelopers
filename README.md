@@ -170,7 +170,7 @@ This project is created for AlQaim Developers. All rights reserved.
 
 For any inquiries, please contact:
 
-- Email: info@alqaimdevelopers.com
+- Email: Sayeedirfan93@gmail.com
 - Phone: +1 (555) 123-4567
 
 ---

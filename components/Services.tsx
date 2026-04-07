@@ -115,6 +115,16 @@ export default function Services() {
       borderColor: "border-gray-400/20",
       iconBg: "bg-gray-400/10",
     },
+    {
+      title: "GST Services",
+      description:
+        "Comprehensive GST solutions including registration, return filing, and compliance management for your business.",
+      iconSrc: "/gst.png",
+      iconAlt: "GST Services",
+      gradient: "from-yellow-400 to-yellow-700",
+      borderColor: "border-yellow-500/20",
+      iconBg: "bg-yellow-500/10",
+    },
   ];
 
   return (

@@ -1,8 +1,15 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function Footer() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const currentYear = new Date().getFullYear();
 
   return (
@@ -30,7 +37,7 @@ export default function Footer() {
             <div className="flex space-x-4">
               {/* WhatsApp */}
               <a
-                href="https://wa.me/1234567890"
+                href="https://wa.me/917889416049"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-900 border border-yellow-500/20 rounded-lg flex items-center justify-center hover:bg-yellow-500/20 hover:border-yellow-500 transition-all duration-200 group"
@@ -46,7 +53,7 @@ export default function Footer() {
               </a>
 
               {/* Instagram */}
-              <a
+              {/* <a
                 href="https://instagram.com/alqaimdevelopers"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -60,11 +67,11 @@ export default function Footer() {
                   height={50}
                   className="group-hover:scale-110 transition-transform"
                 />
-              </a>
+              </a> */}
 
               {/* LinkedIn */}
               <a
-                href="https://linkedin.com/company/alqaimdevelopers"
+                href="https://www.linkedin.com/in/sayeed-irfan-813307298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-900 border border-yellow-500/20 rounded-lg flex items-center justify-center hover:bg-yellow-500/20 hover:border-yellow-500 transition-all duration-200 group"
@@ -111,6 +118,7 @@ export default function Footer() {
                 "Graphic Design",
                 "Marketing",
                 "Branding",
+                "GST Services",
               ].map((service) => (
                 <li key={service}>
                   <a
@@ -128,7 +136,8 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {currentYear} AlQaim Developers. All rights reserved.
+            © {mounted ? currentYear : "2026"} AlQaim Developers. All rights
+            reserved.
           </p>
           <div className="flex space-x-6 text-sm">
             <a

@@ -205,11 +205,10 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 ${
-                  isSubmitting
-                    ? "bg-gray-600 text-gray-300 cursor-not-allowed"
-                    : "bg-linear-to-r from-yellow-500 via-yellow-600 to-yellow-700 text-black hover:shadow-lg hover:shadow-yellow-500/50 transform hover:scale-105"
-                }`}
+                className={`w-full px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 ${isSubmitting
+                  ? "bg-gray-600 text-gray-300 cursor-not-allowed"
+                  : "bg-linear-to-r from-yellow-500 via-yellow-600 to-yellow-700 text-black hover:shadow-lg hover:shadow-yellow-500/50 transform hover:scale-105"
+                  }`}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
@@ -257,10 +256,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-white mb-1">Email</h4>
-                    <p className="text-gray-400">info@alqaimdevelopers.com</p>
-                    <p className="text-gray-400">
-                      support@alqaimdevelopers.com
-                    </p>
+                    <p className="text-gray-400">Sayeedirfan93@gmail.com</p>
                   </div>
                 </div>
 
@@ -282,8 +278,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-white mb-1">Phone</h4>
-                    <p className="text-gray-400">+1 (555) 123-4567</p>
-                    <p className="text-gray-400">+1 (555) 987-6543</p>
+                    <p className="text-gray-400">+91 788 941 6049</p>
                   </div>
                 </div>
 
@@ -311,10 +306,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-white mb-1">Office</h4>
-                    <p className="text-gray-400">123 Business Street</p>
-                    <p className="text-gray-400">
-                      Suite 100, City, State 12345
-                    </p>
+                    <p className="text-gray-400">Kharar, Punjab 140301, India</p>
                   </div>
                 </div>
               </div>
@@ -329,7 +321,7 @@ export default function Contact() {
               <div className="flex space-x-4">
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/1234567890"
+                  href="https://wa.me/917889416049"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-black/20 rounded-lg flex items-center justify-center hover:bg-black/30 transition-all duration-200 backdrop-blur-sm group"
@@ -345,7 +337,7 @@ export default function Contact() {
                 </a>
 
                 {/* Instagram */}
-                <a
+                {/* <a
                   href="https://instagram.com/alqaimdevelopers"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -359,11 +351,11 @@ export default function Contact() {
                     height={50}
                     className="group-hover:scale-110 transition-transform"
                   />
-                </a>
+                </a> */}
 
                 {/* LinkedIn */}
                 <a
-                  href="https://linkedin.com/company/alqaimdevelopers"
+                  href="https://www.linkedin.com/in/sayeed-irfan-813307298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-black/20 rounded-lg flex items-center justify-center hover:bg-black/30 transition-all duration-200 backdrop-blur-sm group"
